@@ -75,16 +75,15 @@
         }
       });
       
-      let qualities = [];
-      
+      const qualityDropdown = document.getElementById('quality-dropdown');
+      const qualityMenu = document.querySelector('.dropdown-menu');
+
       dp.on('loadedmetadata', function() {
         if (dp.videoType === 'hls') {
           const hls = dp.player.player.currentLevel.hls;
           if (hls) {
             qualities = hls.levels;
             if (qualities.length > 1) {
-              const qualityDropdown = document.getElementById('quality-dropdown');
-              const qualityMenu = document.querySelector('.dropdown-menu');
               for (let i = 0; i < qualities.length; i++) {
                 const quality = qualities[i];
                 const dropdownItem = document.createElement('div');
@@ -92,14 +91,16 @@
                 dropdownItem.classList.add('dropdown-item');
                 dropdownItem.addEventListener('click', function() {
                   hls.currentLevel = i;
-                  qualityDropdown.textContent = quality.width + 'x' + quality.height; // menampilkan pilihan kualitas yang dipilih pada tombol dropdown
+                  qualityDropdown.textContent = quality.width + 'x' + quality.height;
                 });
-                qualityMenu.appendChild(dropdownItem); // menambahkan pilihan kualitas ke dalam menu dropdown
+                qualityMenu.appendChild(dropdownItem);
               }
+              qualityDropdown.style.display = 'inline-block';
             }
           }
         }
       });
+
     </script>
   </body>
 </html>
