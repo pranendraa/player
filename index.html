@@ -23,36 +23,29 @@
         width: 100%;
         height: 100%;
       }
-      /* Tambahkan style untuk input form */
-      #input-wrapper {
-        /* Atur padding dan margin untuk tampilan yang lebih baik */
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 500px;
-        /* Atur flexbox agar form selalu berada di tengah */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        /* Sembunyikan form saat tampilan player muncul */
-        display: none;
-      }
-      /* Tambahkan style untuk tombol submit */
-      #submit-button {
-        margin-top: 10px;
+      /* Atur style untuk input link */
+      #input-link {
+        margin-bottom: 20px;
       }
     </style>
   </head>
   <body>
-    <div id="dplayer-wrapper" class="container-fluid">
-      <div id="dplayer"></div>
-    </div>
-    <div id="input-wrapper" class="container-fluid">
-      <h1 class="text-center text-light">Masukkan Link Video</h1>
-      <form class="form-group">
-        <input id="input-link" class="form-control form-control-lg" type="text" placeholder="https://contoh.com/video.mp4">
-        <button id="submit-button" class="btn btn-lg btn-primary" type="submit">Putar</button>
-      </form>
+    <div class="container-fluid">
+      <div class="row justify-content-center mt-3">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+          <form id="video-form">
+            <div id="input-wrapper">
+              <div class="form-group">
+                <input type="text" class="form-control" id="input-link" placeholder="Masukkan link video...">
+              </div>
+              <button type="submit" class="btn btn-primary">Play</button>
+            </div>
+          </form>
+          <div id="dplayer-wrapper" style="display: none;">
+            <div id="dplayer"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -73,9 +66,9 @@
           }
         }
       });
-
+      
       // Tambahkan event listener pada form submit
-      const form = document.querySelector('form');
+      const form = document.getElementById('video-form');
       form.addEventListener('submit', (event) => {
         event.preventDefault(); // Mencegah form submit ke halaman lain
         const videoUrl = document.getElementById('input-link').value;
@@ -87,93 +80,12 @@
         document.getElementById('input-wrapper').style.display = 'none';
       });
       
-        // Tambahkan event listener pada tombol kembali
-  const backButton = document.getElementById('back-button');
-  backButton.addEventListener('click', () => {
-    dp.pause();
-    dp.destroy();
-    document.getElementById('dplayer-wrapper').style.display = 'none';
-    document.getElementById('input-link').value = '';
-    document.getElementById('input-wrapper').style.display = 'block';
-  });
-
-  // Tambahkan event listener pada button fullscreen
-  const fullscreenButton = document.getElementById('fullscreen-button');
-  fullscreenButton.addEventListener('click', () => {
-    if (dp.video.paused) {
-      dp.play();
-    }
-    if (dp.video.webkitEnterFullscreen) {
-      dp.video.webkitEnterFullscreen();
-    } else if (dp.video.mozRequestFullScreen) {
-      dp.video.mozRequestFullScreen();
-    } else if (dp.video.msRequestFullscreen) {
-      dp.video.msRequestFullscreen();
-    } else if (dp.video.requestFullscreen) {
-      dp.video.requestFullscreen();
-    }
-  });
-  
-  // Tambahkan event listener pada button play/pause
-  const playPauseButton = document.getElementById('play-pause-button');
-  playPauseButton.addEventListener('click', () => {
-    if (dp.video.paused) {
-      dp.play();
-      playPauseButton.innerHTML = '<i class="fa fa-pause"></i>';
-    } else {
-      dp.pause();
-      playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
-    }
-  });
-  
-  // Tambahkan event listener pada button stop
-  const stopButton = document.getElementById('stop-button');
-  stopButton.addEventListener('click', () => {
-    dp.seek(0);
-    dp.pause();
-    playPauseButton.innerHTML = '<i class="fa fa-play"></i>';
-  });
-
-  // Tambahkan event listener pada button mute/unmute
-  const muteButton = document.getElementById('mute-button');
-  muteButton.addEventListener('click', () => {
-    if (dp.video.muted) {
-      dp.toggleMuted();
-      muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
-    } else {
-      dp.toggleMuted();
-      muteButton.innerHTML = '<i class="fa fa-volume-off"></i>';
-    }
-  });
-  
-  // Tambahkan event listener pada slider volume
-  const volumeSlider = document.getElementById('volume-slider');
-  volumeSlider.addEventListener('input', () => {
-    dp.volume = volumeSlider.value / 100;
-    if (dp.video.muted) {
-      dp.toggleMuted();
-      muteButton.innerHTML = '<i class="fa fa-volume-up"></i>';
-    }
-  });
-  
-  // Tambahkan event listener pada slider progress
-  const progressSlider = document.getElementById('progress-slider');
-  progressSlider.addEventListener('input', () => {
-    dp.seek(dp.video.duration * (progressSlider.value / 100));
-  });
-  
-  // Fungsi untuk update tampilan progress slider
-  const updateProgress = () => {
-    const currentTime = dp.video.currentTime;
-    const duration = dp.video.duration;
-    const percentage = (currentTime / duration) * 100;
-    progressSlider.value = percentage;
-  };
-  
-  // Jalankan fungsi updateProgress setiap kali video diputar
-  dp.on('play', () => {
-    setInterval(updateProgress, 1000);
-  });
-</script>
-</body>
+      dp.on('fullscreen', () => {
+        if (document.webkitFullscreenElement) {
+          document.webkitFullscreenElement.setAttribute('playsinline', '');
+          document.webkitFullscreenElement.webkitEnterFullScreen();
+        }
+      });
+    </script>
+  </body>
 </html>
