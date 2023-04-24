@@ -4,44 +4,29 @@
     <meta charset="utf-8">
     <title>DPlayer Example with Responsive Video</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+    <!-- Tambahkan link stylesheet Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <style>
       body {
         background-color: #313131;
       }
-/*       #dplayer-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        /* gunakan padding-bottom 56.25% untuk aspect ratio 16:9
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-        /* atur max-width agar player tidak melebihi lebar layar
-      } */
-      
       #dplayer-wrapper {
+        /* Atur tinggi kontainer agar selalu memenuhi layar */
+        height: 100vh;
+        /* Atur flexbox agar video selalu berada di tengah */
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        max-width: 100%;
       }
-
-      #dplayer {
+      /* Atur ukuran video agar sesuai dengan ukuran kontainer */
+      video {
         width: 50%;
         height: 50%;
       }
-
-/*       #dplayer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 50%;
-      } */
     </style>
   </head>
   <body>
-    <div id="dplayer-wrapper">
+    <div id="dplayer-wrapper" class="container-fluid">
       <div id="dplayer"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
@@ -75,7 +60,6 @@
           document.webkitFullscreenElement.webkitEnterFullScreen();
         }
       });
-
     </script>
   </body>
 </html>
