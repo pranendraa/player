@@ -17,6 +17,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
       }
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
       video {
@@ -26,6 +27,18 @@
       /* Atur style untuk input link */
       #input-link {
         margin-bottom: 20px;
+      }
+      
+      /* Atur style untuk tombol back */
+      #back-btn {
+        margin-top: 20px;
+      }
+      /* Sembunyikan tombol play saat video diputar */
+      .dplayer-controller .dplayer-play-icon {
+        display: none;
+      }
+      .dplayer-controller .dplayer-pause-icon {
+        display: block;
       }
     </style>
   </head>
@@ -39,6 +52,10 @@
                 <input type="text" class="form-control" id="input-link" placeholder="Masukkan link video...">
               </div>
               <button type="submit" class="btn btn-primary">Play</button>
+            </div>
+            <div id="dplayer-wrapper" style="display: none;">
+              <div id="dplayer"></div>
+              <button type="button" class="btn btn-secondary" id="back-btn">Back</button>
             </div>
           </form>
           <div id="dplayer-wrapper" style="display: none;">
@@ -79,6 +96,14 @@
         document.getElementById('dplayer-wrapper').style.display = 'block';
         document.getElementById('input-wrapper').style.display = 'none';
       });
+      
+      const backBtn = document.getElementById('back-btn');
+      backBtn.addEventListener('click', () => {
+        document.getElementById('dplayer-wrapper').style.display = 'none';
+        document.getElementById('input-wrapper').style.display = 'block';
+        dp.pause(); // Jika video masih diputar, jeda video
+      });
+
       
       dp.on('fullscreen', () => {
         if (document.webkitFullscreenElement) {
