@@ -58,6 +58,22 @@
         if (document.webkitFullscreenElement) {
           document.webkitFullscreenElement.setAttribute('playsinline', '');
           document.webkitFullscreenElement.webkitEnterFullScreen();
+          if (dp.video.videoWidth > dp.video.videoHeight) {
+            screen.orientation.lock('landscape');
+          }
+        }
+      });
+
+      dp.on('webfullscreen', () => {
+        if (dp.video.videoWidth > dp.video.videoHeight) {
+          screen.orientation.lock('landscape');
+        }
+      });
+
+      dp.on('fullscreen_cancel', () => {
+        if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+          screen.orientation.unlock();
         }
       });
     </script>
