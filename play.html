@@ -31,7 +31,7 @@
     </div>
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>    
-    <script src="./DPlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('videoUrl');
@@ -44,9 +44,9 @@
         video: {
           url: decodeURIComponent(videoUrl),
           type: 'auto'
-        },
-        hls: true,
-        dash: true,
+        }
+//         hls: true,
+//         dash: true,
 //         xhrSetup: {
 //           headers: {
 //             'Referer': 'https://dplayer.js.org/'
