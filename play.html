@@ -4,29 +4,29 @@
     <meta charset="utf-8">
     <title>DPlayer Example with Responsive Video</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+    <!-- Tambahkan link stylesheet Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <style>
       body {
         background-color: #313131;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
       }
-      
       #dplayer-wrapper {
+        /* Atur tinggi kontainer agar selalu memenuhi layar */
+        height: 100vh;
+        /* Atur flexbox agar video selalu berada di tengah */
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
       }
-
-      #dplayer {
+      /* Atur ukuran video agar sesuai dengan ukuran kontainer */
+      video {
         width: 100%;
         height: 100%;
       }
     </style>
   </head>
   <body>
-    <div id="dplayer-wrapper">
+    <div id="dplayer-wrapper" class="container-fluid">
       <div id="dplayer"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
@@ -53,29 +53,11 @@
           }
         }
       });
-
+      
       dp.on('fullscreen', () => {
         if (document.webkitFullscreenElement) {
-          if (screen.orientation.type.startsWith('portrait')) {
-            screen.orientation.lock('landscape');
-          }
           document.webkitFullscreenElement.setAttribute('playsinline', '');
           document.webkitFullscreenElement.webkitEnterFullScreen();
-        }
-      });
-
-      dp.on('webfullscreen', () => {
-        if (screen.orientation.type.startsWith('portrait')) {
-          screen.orientation.lock('landscape');
-        }
-      });
-
-      dp.on('fullscreen_cancel', () => {
-        if (document.webkitFullscreenElement) {
-          document.webkitExitFullscreen();
-        }
-        if (screen.orientation.type.startsWith('landscape')) {
-          screen.orientation.unlock();
         }
       });
     </script>
