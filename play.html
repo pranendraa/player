@@ -2,32 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>DPlayer Example with User Input and Bootstrap</title>
+    <title>DPlayer Example with Responsive Video</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
       body {
         background-color: #313131;
       }
-      #dplayer {
-        width: 100%;
-        height: 0;
+      #dplayer-wrapper {
+        position: relative;
         padding-bottom: 56.25%;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        /* gunakan padding-bottom 56.25% untuk aspect ratio 16:9 */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        /* atur max-width agar player tidak melebihi lebar layar */
       }
-      .container {
-        max-width: 960px;
+      #dplayer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="row justify-content-center mt-5">
-        <div class="col-md-8">
-          <div id="dplayer"></div>
-        </div>
-      </div>
+    <div id="dplayer-wrapper">
+      <div id="dplayer"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -41,48 +42,17 @@
           url: decodeURIComponent(videoUrl),
           type: 'auto'
         },
-        // tambahkan opsi untuk dukungan HLS
         hls: true,
-        // tambahkan opsi untuk file HLS
         xhrSetup: {
           headers: {
             'Referer': 'https://dplayer.js.org/'
           }
         },
-        // tambahkan fungsi callback untuk mengaktifkan HLS
         pluginOptions: {
           hls: {
-            // gunakan Hls.js untuk mengaktifkan pemutaran HLS
-            // pastikan Anda telah memuat file hls.min.js
-            enable: true,
-            // atur konfigurasi Hls.js di sini
-            // contoh:
-            // config: {
-            //   maxBufferSize: 10,
-            //   maxBufferLength: 30
-            // }
+            enable: true
           }
         }
-      });
-      const inputForm = parent.document.getElementById('input-form');
-      inputForm.style.display = 'none';
-
-      // menyesuaikan ukuran player dengan ukuran video
-      dp.on('canplay', function () {
-        const videoHeight = dp.video.videoHeight;
-        const videoWidth = dp.video.videoWidth;
-        const playerWidth = document.getElementById('dplayer').offsetWidth;
-        const playerHeight = (playerWidth / videoWidth) * videoHeight;
-        document.getElementById('dplayer').style.height = playerHeight + 'px';
-      });
-
-      // menyesuaikan ukuran player saat layar dirotasi
-      window.addEventListener('resize', function () {
-        const videoHeight = dp.video.videoHeight;
-        const videoWidth = dp.video.videoWidth;
-        const playerWidth = document.getElementById('dplayer').offsetWidth;
-        const playerHeight = (playerWidth / videoWidth) * videoHeight;
-        document.getElementById('dplayer').style.height = playerHeight + 'px';
       });
     </script>
   </body>
