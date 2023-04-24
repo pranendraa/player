@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPlayer Example with Responsive Video</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+      body {
+        background-color: #313131;
+      }
+      #dplayer-wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+      }
+      .dropdown-menu {
+        background-color: #fff;
+        padding: 0.5rem;
+      }
+      .dropdown-item {
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .dropdown-item:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+<body>
+    <div id="dplayer-wrapper" class="container-fluid">
+      <div id="dplayer"></div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="quality-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Quality
+            </button>
+            <div class="dropdown-menu" aria-labelledby="quality-dropdown">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const videoUrl = urlParams.get('videoUrl');
+      const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        screenshot: true,
+        video: {
+          url: decodeURIComponent(videoUrl),
+          type: 'auto'
+        },
+        hls: true,
+        xhrSetup: {
+          headers: {
+            'Referer': 'https://dplayer.js.org/'
+          }
+        },
+        pluginOptions: {
+          hls: {
+            enable: true,
+            overrideNative: true
+          }
+        }
+      });
+      
+      let qualities = [];
+      
+      dp.on('loadedmetadata', function() {
+        if (dp.videoType === 'hls') {
+          const hls = dp.player.player.currentLevel.hls;
+          if (hls) {
+            qualities = hls.levels;
+            if (qualities.length > 1) {
+              const qualityDropdown = document.getElementById('quality-dropdown');
+              const qualityMenu = document.querySelector('.dropdown-menu');
+              for (let i = 0; i < qualities.length; i++) {
+                const quality = qualities[i];
+                const dropdownItem = document.createElement('div');
+                dropdownItem.textContent = quality.width + 'x' + quality.height;
+                dropdownItem.classList.add('dropdown-item');
+                dropdownItem.addEventListener('click', function() {
+                  hls.currentLevel = i;
+                  qualityDropdown.textContent = quality.width + 'x' + quality.height; // menampilkan pilihan kualitas yang dipilih pada tombol dropdown
+                });
+                qualityMenu.appendChild(dropdownItem); // menambahkan pilihan kualitas ke dalam menu dropdown
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
