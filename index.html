@@ -110,10 +110,26 @@
           url: videoUrl,
           type: 'auto'
         });
-        document.getElementById('dplayer-wrapper').style.display = 'block';
+        document.getElementById('dplayer-wrapper').style.display = 'flex';
+        document.getElementById('dplayer-wrapper').style.justifyContent = 'center';
+        document.getElementById('dplayer-wrapper').style.alignItems = 'center';
         document.getElementById('input-wrapper').style.display = 'none';
       });
       
+        // Tambahkan style agar form dan player selalu ada di tengah page
+      const container = document.querySelector('.container-fluid');
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.style.alignItems = 'center';
+        container.style.height = '100vh';
+        container.style.flexDirection = 'column';
+      });
+        document.getElementById('dplayer-wrapper').style.display = 'flex'; // Menampilkan player
+        document.getElementById('dplayer-wrapper').style.justifyContent = 'center'; // Menengahkan player secara horizontal
+        document.getElementById('dplayer-wrapper').style.alignItems = 'center'; // Menengahkan player secara vertikal
+        document.getElementById('input-wrapper').style.display = 'none'; // Menyembunyikan form input
+      });
+
       const backBtn = document.getElementById('back-btn');
       backBtn.addEventListener('click', () => {
         document.getElementById('dplayer-wrapper').style.display = 'none';
@@ -121,7 +137,20 @@
         dp.pause(); // Jika video masih diputar, jeda video
       });
 
-      
+      // Tambahkan style untuk menengahkan form input secara horizontal dan vertikal
+      const inputWrapper = document.getElementById('input-wrapper');
+      inputWrapper.style.display = 'flex';
+      inputWrapper.style.justifyContent = 'center';
+      inputWrapper.style.alignItems = 'center';
+
+//       const backBtn = document.getElementById('back-btn');
+//       backBtn.addEventListener('click', () => {
+//         document.getElementById('dplayer-wrapper').style.display = 'none';
+//         document.getElementById('input-wrapper').style.display = 'block';
+//         dp.pause(); // Jika video masih diputar, jeda video
+//       });
+
+ 
       dp.on('fullscreen', () => {
         if (document.webkitFullscreenElement) {
           document.webkitFullscreenElement.setAttribute('playsinline', '');
