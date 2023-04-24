@@ -15,6 +15,7 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('videoUrl');
@@ -24,8 +25,32 @@
         video: {
           url: decodeURIComponent(videoUrl),
           type: 'auto'
+        },
+        // tambahkan opsi untuk dukungan HLS
+        hls: true,
+        // tambahkan opsi untuk file HLS
+        xhrSetup: {
+          headers: {
+            'Referer': 'https://dplayer.js.org/'
+          }
+        },
+        // tambahkan fungsi callback untuk mengaktifkan HLS
+        pluginOptions: {
+          hls: {
+            // gunakan Hls.js untuk mengaktifkan pemutaran HLS
+            // pastikan Anda telah memuat file hls.min.js
+            enable: true,
+            // atur konfigurasi Hls.js di sini
+            // contoh:
+            // config: {
+            //   maxBufferSize: 10,
+            //   maxBufferLength: 30
+            // }
+          }
         }
       });
+      const inputForm = parent.document.getElementById('input-form');
+      inputForm.style.display = 'none';
     </script>
   </body>
 </html>
