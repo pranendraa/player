@@ -44,17 +44,17 @@
           url: decodeURIComponent(videoUrl),
           type: 'auto'
         }
-//         hls: true,
-//         xhrSetup: {
-//           headers: {
-//             'Referer': 'https://dplayer.js.org/'
-//           }
-//         },
-//         pluginOptions: {
-//           hls: {
-//             enable: true
-//           }
-//         }
+        hls: true,
+        xhrSetup: {
+          headers: {
+            'Referer': 'https://dplayer.js.org/'
+          }
+        },
+        pluginOptions: {
+          hls: {
+            enable: true
+          }
+        }
       });
       
       dp.on('fullscreen', () => {
