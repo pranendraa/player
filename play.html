@@ -8,10 +8,11 @@
     <style>
       body {
         background-color: #313131;
-       }
+      }
       #dplayer {
         width: 100%;
-        height: calc(100vh - 80px);
+        height: 0;
+        padding-bottom: 56.25%;
         margin-top: 30px;
         margin-bottom: 30px;
       }
@@ -65,6 +66,24 @@
       });
       const inputForm = parent.document.getElementById('input-form');
       inputForm.style.display = 'none';
+
+      // menyesuaikan ukuran player dengan ukuran video
+      dp.on('canplay', function () {
+        const videoHeight = dp.video.videoHeight;
+        const videoWidth = dp.video.videoWidth;
+        const playerWidth = document.getElementById('dplayer').offsetWidth;
+        const playerHeight = (playerWidth / videoWidth) * videoHeight;
+        document.getElementById('dplayer').style.height = playerHeight + 'px';
+      });
+
+      // menyesuaikan ukuran player saat layar dirotasi
+      window.addEventListener('resize', function () {
+        const videoHeight = dp.video.videoHeight;
+        const videoWidth = dp.video.videoWidth;
+        const playerWidth = document.getElementById('dplayer').offsetWidth;
+        const playerHeight = (playerWidth / videoWidth) * videoHeight;
+        document.getElementById('dplayer').style.height = playerHeight + 'px';
+      });
     </script>
   </body>
 </html>
