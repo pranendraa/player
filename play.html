@@ -18,6 +18,29 @@
         justify-content: center;
         align-items: center;
       }
+
+      /* Ukuran video default */
+      #dplayer video {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Ukuran video untuk layar lebar (di atas 1024px) */
+      @media screen and (min-width: 1024px) {
+        #dplayer video {
+          width: 1024px;
+          height: 576px;
+        }
+      }
+
+      /* Ukuran video untuk layar sempit (di bawah 1024px) */
+      @media screen and (max-width: 1024px) {
+        #dplayer video {
+          width: 100%;
+          height: auto;
+        }
+      }
+
       
 /*       .container-fluid{
         margin-top: 0px;
@@ -25,10 +48,10 @@
       } */
       
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
-      video {
+      /* video {
         width: 100%;
         height: 100%;
-      }
+      } */
     </style>
   </head>
   <body>
