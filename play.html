@@ -19,10 +19,10 @@
         align-items: center;
       }
       
-      .container-fluid{
+/*       .container-fluid{
         margin-top: 0px;
         margin-bottom: 0px;
-      }
+      } */
       
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
       video {
@@ -71,15 +71,15 @@
       
       dp.on('loadedmetadata', function () {
         const container = document.getElementById('dplayer-wrapper');
-        const fluid = document.getElementsByClassName("container-fluid");
+//         const fluid = document.getElementsByClassName("container-fluid");
         const video = container.querySelector('video');
 
         if (video.videoWidth > video.videoHeight) {
           video.style.width = '100%';
           video.style.height = '100%';
         } else {
-          fluid.style.margin-top = '100px';
-          fluid.style.margin-bottom = '100px';
+          video.style.width = '80%';
+          video.style.height = '80%';
         }
       });
       
