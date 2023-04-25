@@ -13,7 +13,6 @@
       #dplayer-wrapper {
         /* Atur tinggi kontainer agar selalu memenuhi layar */
         height: 100vh;
-        max-heigt: calc(100vw - 80vh);
         /* Atur flexbox agar video selalu berada di tengah */
         display: flex;
         justify-content: center;
@@ -45,14 +44,14 @@
         video: {
           url: decodeURIComponent(videoUrl),
           type: 'auto'
-        },
+        }
 //         hls: true,
 //         dash: true,
-        xhrSetup: {
-          headers: {
-            'Referer': 'https://kqrumi.my.id/'
-          }
-        }
+//         xhrSetup: {
+//           headers: {
+//             'Referer': 'https://dplayer.js.org/'
+//           }
+//         },
 //         pluginOptions: {
 //           hls: {
 //             enable: true
@@ -60,12 +59,12 @@
 //         }
       });
       
-      dp.on('fullscreen', () => {
-        if (document.webkitFullscreenElement) {
-          document.webkitFullscreenElement.setAttribute('playsinline', '');
-          document.webkitFullscreenElement.webkitEnterFullScreen();
-        }
-      });
+//       dp.on('fullscreen', () => {
+//         if (document.webkitFullscreenElement) {
+//           document.webkitFullscreenElement.setAttribute('playsinline', '');
+//           document.webkitFullscreenElement.webkitEnterFullScreen();
+//         }
+//       });
     </script>
   </body>
 </html>
