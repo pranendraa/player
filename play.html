@@ -59,6 +59,15 @@
         z-index: 9999;
       }
 
+      /* Atur video player agar berada di tengah */
+      #dplayer.dplayer-web-fullscreen video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+
       
 /*       .container-fluid{
         margin-top: 0px;
@@ -122,6 +131,19 @@
         // Hapus class CSS untuk tampilan fullscreen video
         dp.container.classList.remove('dplayer-fullscreen');
       });
+
+      // Deteksi saat video memasuki mode web-fullscreen
+      dp.on('webfullscreen', function () {
+        // Tambahkan kelas CSS untuk menampilkan video player di tengah
+        dp.container.classList.add('dplayer-web-fullscreen');
+      });
+
+      // Deteksi saat video keluar dari mode web-fullscreen
+      dp.on('webfullscreen_cancel', function () {
+        // Hapus kelas CSS untuk menampilkan video player di tengah
+        dp.container.classList.remove('dplayer-web-fullscreen');
+      });
+
 
 
 
