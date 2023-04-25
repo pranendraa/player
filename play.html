@@ -50,7 +50,6 @@
 
       /* Tampilan fullscreen video */
       #dplayer.dplayer-fullscreen video {
-        /* position: fixed; */
         top: 0;
         left: 0;
         width: 100%;
@@ -61,35 +60,10 @@
 
       /* Atur video player agar berada di tengah */
       #dplayer.dplayer-web-fullscreen video {
-        /* position: fixed;
-        top: 50%;
-        left: 50%; */
-        
         width: 100%;
         height: 100%;
         object-fit: contain;
-        /* transform: translate(-50%, -50%); */
       }
-
-      /* #dplayer.dplayer-web-fullscreen .dplayer-video-wrap video {
-        object-fit: contain;
-        width: 100%;
-        height: 100%;
-      } */
-
-
-
-      
-/*       .container-fluid{
-        margin-top: 0px;
-        margin-bottom: 0px;
-      } */
-      
-      /* Atur ukuran video agar sesuai dengan ukuran kontainer */
-      /* video {
-        width: 100%;
-        height: 100%;
-      } */
     </style>
   </head>
   <body>
@@ -154,15 +128,6 @@
         // Hapus kelas CSS untuk menampilkan video player di tengah
         dp.container.classList.remove('dplayer-web-fullscreen');
       });
-
-
-
-
-      // if (window.innerWidth >= 1024) {
-      //     video.style.cssText = 'height: 80vh; max-height: calc(100vw * 9 / 16);' //pc
-      // } else {
-      //     video.style.cssText = 'max-height: 80vh; max-width: 100%;' //hp
-      // }
 
 //       dp.on('fullscreen', () => {
 //         if (document.webkitFullscreenElement) {
