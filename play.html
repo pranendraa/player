@@ -37,6 +37,7 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('videoUrl');
+      document.title = "Web Player DPlayer - " + videoUrl;
 //       const videoUrl = window.location.pathname.replace('/player/play/', '');
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
