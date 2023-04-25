@@ -33,7 +33,7 @@
   </head>
   <body>
     
-    <div id="dplayer-wrapper" class="container-fluid col-md-8">
+    <div id="dplayer-wrapper" class="container-fluid">
       
       <div id="dplayer"></div>
       
@@ -46,7 +46,6 @@
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('videoUrl');
       document.title = "Web Player with DPlayer - " + videoUrl;
-//       const videoUrl = window.location.pathname.replace('/player/play/', '');
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
         screenshot: true,
@@ -70,21 +69,7 @@
           }
         }
       });
-      
-      // Fungsi untuk mengatur ukuran kontainer sesuai ukuran jendela browser
-      function resizePlayer() {
-        const playerWrapper = document.getElementById('dplayer-wrapper');
-        const playerHeight = playerWrapper.offsetHeight;
-        const windowHeight = window.innerHeight;
-        const newHeight = Math.max(playerHeight, windowHeight) + 'px';
-        playerWrapper.style.height = newHeight;
-      }
 
-      // Panggil fungsi resizePlayer saat halaman dimuat dan saat ukuran jendela browser berubah
-      window.addEventListener('load', resizePlayer);
-      window.addEventListener('resize', resizePlayer);
-
-      
 //       dp.on('fullscreen', () => {
 //         if (document.webkitFullscreenElement) {
 //           document.webkitFullscreenElement.setAttribute('playsinline', '');
