@@ -17,9 +17,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      
+      .container-fluid{
         margin-top: 30px;
         margin-bottom: 30px;
       }
+      
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
       video {
         width: 100%;
@@ -39,7 +43,7 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('videoUrl');
-      document.title = "Web Player DPlayer - " + videoUrl;
+      document.title = "Web Player with DPlayer - " + videoUrl;
 //       const videoUrl = window.location.pathname.replace('/player/play/', '');
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
