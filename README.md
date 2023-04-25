@@ -1,3 +1,4 @@
+## Web Player with DPlayer
 ## Problem
 * CORS issue - If the media server blocks other IPs saying CORS. You might have to install this chrome extension to get around this - https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
 ##
