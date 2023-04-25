@@ -71,19 +71,19 @@
         }
       });
       
-      dp.on('loadedmetadata', function () {
-        const container = document.getElementById('dplayer-wrapper');
-        // const fluid = document.getElementsByClassName('container-fluid');
-        const video = container.querySelector('video');
+      // Fungsi untuk mengatur ukuran kontainer sesuai ukuran jendela browser
+      function resizePlayer() {
+        const playerWrapper = document.getElementById('dplayer-wrapper');
+        const playerHeight = playerWrapper.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const newHeight = Math.max(playerHeight, windowHeight) + 'px';
+        playerWrapper.style.height = newHeight;
+      }
 
-        if (video.videoWidth > video.videoHeight) {
-          video.style.width = '100%';
-          video.style.height = '100%';
-        } else {
-          video.style.width = 'full';
-          video.style.height = 'full';
-        }
-      });
+      // Panggil fungsi resizePlayer saat halaman dimuat dan saat ukuran jendela browser berubah
+      window.addEventListener('load', resizePlayer);
+      window.addEventListener('resize', resizePlayer);
+
       
 //       dp.on('fullscreen', () => {
 //         if (document.webkitFullscreenElement) {
