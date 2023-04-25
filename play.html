@@ -70,6 +70,19 @@
         }
       });
 
+      // detect video orientation
+      const video = document.createElement('video');
+      video.src = decodeURIComponent(videoUrl);
+      video.onloadedmetadata = function() {
+        const isVertical = this.videoHeight > this.videoWidth;
+        if (isVertical) {
+          dp.on('canplay', () => {
+            dp.fullScreen.request('browser');
+          });
+        }
+      };
+
+
       // if (window.innerWidth >= 1024) {
       //     video.style.cssText = 'height: 80vh; max-height: calc(100vw * 9 / 16);' //pc
       // } else {
