@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^player/play/(.*)$ /player/play.html?videoUrl=$1 [L,QSA]
