@@ -30,7 +30,6 @@
       #dplayer video {
         width: 100%;
         height: 100%;
-        object-fit: contain;
       }
 
       /* Ukuran video untuk layar lebar (di atas 1024px) */
@@ -48,6 +47,17 @@
           height: auto;
         }
       }
+
+      /* Tampilan fullscreen video */
+      /* #dplayer.dplayer-fullscreen video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 9999;
+      } */
 
       
 /*       .container-fluid{
@@ -101,17 +111,17 @@
         }
       });
 
-      // detect video orientation
-      const video = document.createElement('video');
-      video.src = decodeURIComponent(videoUrl);
-      video.onloadedmetadata = function() {
-        const isVertical = this.videoHeight > this.videoWidth;
-        if (isVertical) {
-          dp.on('canplay', () => {
-            dp.fullScreen.request('browser');
-          });
-        }
-      };
+      // // detect video orientation
+      // const video = document.createElement('video');
+      // video.src = decodeURIComponent(videoUrl);
+      // video.onloadedmetadata = function() {
+      //   const isVertical = this.videoHeight > this.videoWidth;
+      //   if (isVertical) {
+      //     dp.on('canplay', () => {
+      //       dp.fullScreen.request('browser');
+      //     });
+      //   }
+      // };
 
 
       // if (window.innerWidth >= 1024) {
