@@ -49,7 +49,7 @@
       }
 
       /* Tampilan fullscreen video */
-      /* #dplayer.dplayer-fullscreen video {
+      #dplayer.dplayer-fullscreen video {
         position: fixed;
         top: 0;
         left: 0;
@@ -57,7 +57,7 @@
         height: 100%;
         object-fit: contain;
         z-index: 9999;
-      } */
+      }
 
       
 /*       .container-fluid{
@@ -111,17 +111,18 @@
         }
       });
 
-      // // detect video orientation
-      // const video = document.createElement('video');
-      // video.src = decodeURIComponent(videoUrl);
-      // video.onloadedmetadata = function() {
-      //   const isVertical = this.videoHeight > this.videoWidth;
-      //   if (isVertical) {
-      //     dp.on('canplay', () => {
-      //       dp.fullScreen.request('browser');
-      //     });
-      //   }
-      // };
+      // Deteksi saat video memasuki fullscreen
+      dp.on('fullscreen', function () {
+        // Tambahkan class CSS untuk tampilan fullscreen video
+        dp.container.classList.add('dplayer-fullscreen');
+      });
+
+      // Deteksi saat video keluar dari fullscreen
+      dp.on('fullscreen_cancel', function () {
+        // Hapus class CSS untuk tampilan fullscreen video
+        dp.container.classList.remove('dplayer-fullscreen');
+      });
+
 
 
       // if (window.innerWidth >= 1024) {
