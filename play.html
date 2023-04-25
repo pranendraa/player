@@ -17,6 +17,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
       }
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
       video {
@@ -48,19 +50,19 @@
         video: {
           url: decodeURIComponent(videoUrl),
           type: 'auto'
+        },
+        hls: true,
+        dash: true,
+        xhrSetup: {
+          headers: {
+            'Referer': 'https://dplayer.js.org/'
+          }
+        },
+        pluginOptions: {
+          hls: {
+            enable: true
+          }
         }
-//         hls: true,
-//         dash: true,
-//         xhrSetup: {
-//           headers: {
-//             'Referer': 'https://dplayer.js.org/'
-//           }
-//         },
-//         pluginOptions: {
-//           hls: {
-//             enable: true
-//           }
-//         }
       });
       
 //       dp.on('fullscreen', () => {
