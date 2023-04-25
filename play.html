@@ -35,7 +35,7 @@
     
     <div id="dplayer-wrapper" class="container-fluid">
       
-      <video id="dplayer" class="w-100"></video>
+      <div id="dplayer" class="w-100"></div>
       
     </div>
     
@@ -70,11 +70,11 @@
         }
       });
 
-      if (window.innerWidth >= 1024) {
-          video.style.cssText = 'height: 80vh; max-height: calc(100vw * 9 / 16);' //pc
-      } else {
-          video.style.cssText = 'max-height: 80vh; max-width: 100%;' //hp
-      }
+      // if (window.innerWidth >= 1024) {
+      //     video.style.cssText = 'height: 80vh; max-height: calc(100vw * 9 / 16);' //pc
+      // } else {
+      //     video.style.cssText = 'max-height: 80vh; max-width: 100%;' //hp
+      // }
 
 //       dp.on('fullscreen', () => {
 //         if (document.webkitFullscreenElement) {
