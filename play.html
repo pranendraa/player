@@ -19,10 +19,10 @@
         align-items: center;
       }
       
-      .container-fluid{
+/*       .container-fluid{
         margin-top: 150px;
         margin-bottom: 150px;
-      }
+      } */
       
       /* Atur ukuran video agar sesuai dengan ukuran kontainer */
       video {
@@ -66,6 +66,19 @@
           hls: {
             enable: true
           }
+        }
+      });
+      
+      dp.on('loadedmetadata', function () {
+        const container = document.getElementById('dplayer-wrapper');
+        const video = container.querySelector('video');
+
+        if (video.videoWidth > video.videoHeight) {
+          video.style.width = '100%';
+          video.style.height = 'auto';
+        } else {
+          video.style.width = 'auto';
+          video.style.height = '100%';
         }
       });
       
