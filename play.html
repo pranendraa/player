@@ -32,13 +32,13 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    
     <div id="dplayer-wrapper" class="container-fluid col-md-8">
       
       <div id="dplayer"></div>
       
     </div>
-    </div>
+    
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>    
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
@@ -71,19 +71,19 @@
         }
       });
       
-//       dp.on('loadedmetadata', function () {
-//         const container = document.getElementById('dplayer-wrapper');
-// //         const fluid = document.getElementsByClassName("container-fluid");
-//         const video = container.querySelector('video');
+      dp.on('loadedmetadata', function () {
+        const container = document.getElementById('dplayer-wrapper');
+        const fluid = document.getElementsByClassName("container-fluid");
+        const video = container.querySelector('video');
 
-//         if (video.videoWidth > video.videoHeight) {
-//           video.style.width = '100%';
-//           video.style.height = '100%';
-//         } else {
-//           video.style.width = '80%';
-//           video.style.height = '80%';
-//         }
-//       });
+        if (video.videoWidth > video.videoHeight) {
+          video.style.width = '100%';
+          video.style.height = '100%';
+        } else {
+          fluid.style.width = '80%';
+          fluid.style.height = '80%';
+        }
+      });
       
 //       dp.on('fullscreen', () => {
 //         if (document.webkitFullscreenElement) {
