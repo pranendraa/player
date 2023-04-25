@@ -71,14 +71,15 @@
       
       dp.on('loadedmetadata', function () {
         const container = document.getElementById('dplayer-wrapper');
+        const fluid = document.getElementsByClassName("container-fluid");
         const video = container.querySelector('video');
 
         if (video.videoWidth > video.videoHeight) {
           video.style.width = '100%';
           video.style.height = '100%';
         } else {
-          container.style.margin-top = '100px';
-          container.style.margin-bottom = '100px';
+          container-fluid.style.margin-top = '100px';
+          container-fluid.style.margin-bottom = '100px';
         }
       });
       
