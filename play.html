@@ -83,7 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const videoUrl = urlParams.get('videoUrl');
+      const videoUrl = urlParams.get('url');
       document.title = "Web Player with DPlayer - " + videoUrl;
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
