@@ -86,7 +86,7 @@
       const videoUrl = urlParams.get('videoUrl');
       const urlPlay = "play/#" + decodeURIComponent(videoUrl);
       window.location.href = urlPlay;
-      document.title = "Web Player with DPlayer - " + decodeURIComponent(videoUrl);
+      document.title = "Web Player with DPlayer - " + videoUrl;
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
         screenshot: true,
