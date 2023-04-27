@@ -26,7 +26,8 @@
     <script>
       function playVideo() {
         const videoUrl = document.getElementById('video-url').value;
-        window.location.href = "play.html?videoUrl=" + encodeURIComponent(videoUrl);
+        window.location.href = "play/#" + encodeURIComponent(videoUrl);
+        // window.location.href = "play.html?videoUrl=" + encodeURIComponent(videoUrl);
       }
     </script>
   </body>
