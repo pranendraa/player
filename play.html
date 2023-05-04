@@ -89,6 +89,7 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('url');
+      const url = encodeURIComponent(videoUrl);
       document.title = "Web Player with DPlayer - " + videoUrl;
       const dp = new DPlayer({
         container: document.getElementById('dplayer'),
@@ -97,7 +98,7 @@
         hotkey: true,
         preventClickToggle: true,
         video: {
-          url: encodeURIComponent(videoUrl),
+          url: url,
           type: 'auto'
         },
         hls: true,
