@@ -82,6 +82,10 @@
       <div id="dplayer"></div>
       
     </div>
+    <div class="form-group">
+      <label for="linkurl">Copy</label>
+      <input id="linkurl" class="form-control" type="text" value="" readonly>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>    
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
@@ -116,6 +120,8 @@
           }
         }
       });
+
+      
 
       // Deteksi saat video memasuki fullscreen
       dp.on('fullscreen', function () {
