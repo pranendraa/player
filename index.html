@@ -20,14 +20,30 @@
             <label for="video-url">Enter video URL:</label>
             <input type="text" class="form-control" id="video-url">
           </div>
-          <button class="btn btn-primary btn-block" onclick="playVideo()">Play</button>
+          <div class="form-group">
+            <label for="encoding-option">Choose an option:</label>
+            <select class="form-control" id="encoding-option">
+              <option value="encode">Encode URL</option>
+              <option value="decode" selected>Decode URL</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="processVideo()">Play</button>
         </div>
       </div>
     </div>
     <script>
-      function playVideo() {
+      function processVideo() {
         const videoUrl = document.getElementById('video-url').value;
-        window.location.href = "play.html?url=" + encodeURIComponent(videoUrl);
+        const encodingOption = document.getElementById('encoding-option').value;
+        let processedUrl = videoUrl;
+
+        if (encodingOption === 'encode') {
+          processedUrl = encodeURIComponent(videoUrl);
+        } else if (encodingOption === 'decode') {
+          processedUrl = decodeURIComponent(videoUrl);
+        }
+
+        window.location.href = "play.html?url=" + processedUrl;
       }
     </script>
   </body>
