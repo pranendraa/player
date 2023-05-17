@@ -21,40 +21,11 @@
         align-items: center;
       }
 
-      /* #inputan{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      } */
-
-      /* Atur ukuran video agar sesuai dengan ukuran kontainer
-      video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      } */
-
       /* Ukuran video default */
       #dplayer video {
         width: 100%;
         height: 100%;
       }
-
-      /* @media screen and (min-width: 1024px) {
-        #inputan {
-          width: 920px;
-          height: auto;
-          
-        }
-      }
-
-      @media screen and (max-width: 1024px) {
-        #inputan {
-          width: 100%;
-          height: auto;
-          
-        }
-      } */
 
       /* resize update */
       /* Ukuran video untuk layar lebar (di atas 1024px) */
@@ -106,17 +77,6 @@
 
     </div>
 
-    <!-- <div id="inputan" class="container-fluid">
-      <input id="linkurl" class="form-control" type="text" value="" readonly>
-    </div> -->
-<!-- 
-    <div id="copy" class="container-fluid col-md-12">
-      <div class="form-group row">
-        <label for="linkurl">Copy :</label>
-          <input id="linkurl" class="form-control" type="text" value="" readonly>
-      </div>
-    </div> -->
-    
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>    
     <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
@@ -151,8 +111,6 @@
         }
       });
 
-      // document.getElementById('linkurl').value = videoUrl;
-
       // Deteksi saat video memasuki fullscreen
       dp.on('fullscreen', function () {
         // Tambahkan class CSS untuk tampilan fullscreen video
@@ -177,12 +135,6 @@
         dp.container.classList.remove('dplayer-web-fullscreen');
       });
 
-//       dp.on('fullscreen', () => {
-//         if (document.webkitFullscreenElement) {
-//           document.webkitFullscreenElement.setAttribute('playsinline', '');
-//           document.webkitFullscreenElement.webkitEnterFullScreen();
-//         }
-//       });
     </script>
   </body>
 </html>
