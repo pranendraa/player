@@ -48,9 +48,9 @@
         let processedSubtitleUrl = '';
 
         if (encodingOption === 'encode') {
-          processedUrl = encodeURLComponent(videoUrl);
+          processedUrl = encodeURIComponent(videoUrl);
           if (subtitleUrl && subtitleUrl.trim() !== '') {
-            processedSubtitleUrl = encodeURLComponent(subtitleUrl);
+            processedSubtitleUrl = encodeURIComponent(subtitleUrl);
           }
         } else if (encodingOption === 'decode') {
           processedUrl = decodeURIComponent(videoUrl);
