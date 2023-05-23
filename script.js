@@ -16,7 +16,7 @@ const dp = new DPlayer({
         url: subtitleUrl, // Mengatur URL subtitle pada objek DPlayer
         type: 'webvtt',
         fontSize: '30px',
-        color: '#ff0'
+        color: '#ffff00'
     },
     hls: true,
     dash: true,
