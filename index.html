@@ -44,7 +44,6 @@
         const subtitleUrl = document.getElementById('subtitle-url').value;
         const encodingOption = document.getElementById('encoding-option').value;
         let processedUrl = videoUrl;
-        // let processedSubtitleUrl = subtitleUrl;
         let processedSubtitleUrl = '';
 
         if (encodingOption === 'encode') {
@@ -59,29 +58,8 @@
           }
         }
 
-        // if (subtitleUrl && subtitleUrl.trim() !== '') {
-        //   if (encodingOption === 'encode') {
-        //     processedUrl = encodeURIComponent(videoUrl);
-        //     processedSubtitleUrl = encodeURIComponent(subtitleUrl);
-        //   } else if (encodingOption === 'decode') {
-        //     processedUrl = decodeURIComponent(videoUrl);
-        //     processedSubtitleUrl = decodeURIComponent(subtitleUrl);
-        //   }
-        // }
-
         const url = "play.html?url=" + processedUrl + (processedSubtitleUrl ? "&subtitle=" + processedSubtitleUrl : '');
         window.location.href = url;
-
-        // if (encodingOption === 'encode') {
-        //   processedUrl = encodeURIComponent(videoUrl);
-        //   processedSubtitleUrl = subtitleUrl ? encodeURIComponent(subtitleUrl) : '';
-        // } else if (encodingOption === 'decode') {
-        //   processedUrl = decodeURIComponent(videoUrl);
-        //   processedSubtitleUrl = subtitleUrl ? decodeURIComponent(subtitleUrl) : '';
-        // }
-
-        // const url = "play.html?url=" + processedUrl + (processedSubtitleUrl ? "&subtitle=" + processedSubtitleUrl : '');
-        // window.location.href = url;
       }
 
       function showNote() {
