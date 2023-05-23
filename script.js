@@ -12,11 +12,16 @@ const dp = new DPlayer({
         url: videoUrl,
         type: 'auto'
     },
-    subtitle: {
-        url: subtitleUrl, // Mengatur URL subtitle pada objek DPlayer
+    subtitle: subtitleUrl ? {
+        url: subtitleUrl,
         type: 'webvtt',
         fontSize: '30px'
-    },
+    } : null,   
+    // subtitle: {
+    //     url: subtitleUrl, // Mengatur URL subtitle pada objek DPlayer
+    //     type: 'webvtt',
+    //     fontSize: '30px'
+    // },
     hls: true,
     dash: true,
     xhrSetup: {
