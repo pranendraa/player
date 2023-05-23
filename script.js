@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const videoUrl = urlParams.get('url');
+const subtitleUrl = urlParams.get('subtitle'); // Mendapatkan URL subtitle dari parameter URL
 document.title = "Web Player with DPlayer - " + videoUrl;
 const dp = new DPlayer({
     container: document.getElementById('dplayer'),
@@ -10,6 +11,11 @@ const dp = new DPlayer({
     video: {
         url: videoUrl,
         type: 'auto'
+    },
+    subtitle: {
+        url: subtitleUrl, // Mengatur URL subtitle pada objek DPlayer
+        type: 'webvtt',
+        fontSize: '30px'
     },
     hls: true,
     dash: true,
