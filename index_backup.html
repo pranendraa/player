@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Player with DPlayer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  </head>
+  <style>
+    /* fix  */
+      body {
+        background-color: #0f0f0f;
+        color: #fff;
+      }
+  </style>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="video-url">Enter video URL:</label>
+            <input type="text" class="form-control" id="video-url">
+          </div>
+          <div class="form-group">
+            <label for="encoding-option">Choose an option:</label>
+            <select class="form-control" id="encoding-option">
+              <option value="decode" selected>Decode URL</option>
+              <option value="encode">Encode URL</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="processVideo()">Play</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function processVideo() {
+        const videoUrl = document.getElementById('video-url').value;
+        const encodingOption = document.getElementById('encoding-option').value;
+        let processedUrl = videoUrl;
+
+        if (encodingOption === 'encode') {
+          processedUrl = encodeURIComponent(videoUrl);
+        } else if (encodingOption === 'decode') {
+          processedUrl = decodeURIComponent(videoUrl);
+        }
+
+        window.location.href = "play.html?url=" + processedUrl;
+      }
+    </script>
+  </body>
+</html>

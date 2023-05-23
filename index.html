@@ -21,6 +21,10 @@
             <input type="text" class="form-control" id="video-url">
           </div>
           <div class="form-group">
+            <label for="subtitle-url">Enter subtitle URL:</label>
+            <input type="text" class="form-control" id="subtitle-url">
+          </div>
+          <div class="form-group">
             <label for="encoding-option">Choose an option:</label>
             <select class="form-control" id="encoding-option">
               <option value="decode" selected>Decode URL</option>
@@ -34,16 +38,21 @@
     <script>
       function processVideo() {
         const videoUrl = document.getElementById('video-url').value;
+        const subtitleUrl = document.getElementById('subtitle-url').value;
         const encodingOption = document.getElementById('encoding-option').value;
         let processedUrl = videoUrl;
+        let processedSubtitleUrl = subtitleUrl;
 
         if (encodingOption === 'encode') {
           processedUrl = encodeURIComponent(videoUrl);
+          processedSubtitleUrl = subtitleUrl ? encodeURIComponent(subtitleUrl) : '';
         } else if (encodingOption === 'decode') {
           processedUrl = decodeURIComponent(videoUrl);
+          processedSubtitleUrl = subtitleUrl ? decodeURIComponent(subtitleUrl) : '';
         }
 
-        window.location.href = "play.html?url=" + processedUrl;
+        const url = "play.html?url=" + processedUrl + (processedSubtitleUrl ? "&subtitle=" + processedSubtitleUrl : '');
+        window.location.href = url;
       }
     </script>
   </body>
