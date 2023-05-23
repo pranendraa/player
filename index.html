@@ -32,6 +32,7 @@
             </select>
           </div>
           <button class="btn btn-primary btn-block" onclick="processVideo()">Play</button>
+          <p id="note" class="mt-3"></p>
         </div>
       </div>
     </div>
@@ -54,6 +55,13 @@
         const url = "play.html?url=" + processedUrl + (processedSubtitleUrl ? "&subtitle=" + processedSubtitleUrl : '');
         window.location.href = url;
       }
+
+      function showNote() {
+        const noteElement = document.getElementById('note');
+        noteElement.innerText = "- Silahkan gunakan encode URL video/subtitle jika tidak bisa diputar / tidak menampilkan subtitle\n- Saat ini, subtitle hanya support format .vtt";
+      }
+
+      showNote();
     </script>
   </body>
 </html>
