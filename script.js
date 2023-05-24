@@ -11,7 +11,7 @@ const dp = new DPlayer({
 
     video: {
         url: videoUrl,
-        thumbnails: 'img/bg.jpg',
+        thumbnails: 'bg.jpg',
         type: 'auto'
     },
     subtitle: subtitleUrl ? {
