@@ -8,7 +8,6 @@ const dp = new DPlayer({
     autoplay: false,
     hotkey: true,
     preventClickToggle: true,
-
     video: {
         url: videoUrl,
         thumbnails: 'bg.jpg',
