@@ -5,12 +5,11 @@ document.title = "Web Player with DPlayer - " + videoUrl;
 const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     screenshot: true,
-    autoplay: false,
+    autoplay: true,
     hotkey: true,
     preventClickToggle: true,
     video: {
         url: videoUrl,
-        thumbnails: 'bg.jpg',
         type: 'auto'
     },
     subtitle: subtitleUrl ? {
