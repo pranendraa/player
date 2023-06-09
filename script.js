@@ -15,7 +15,8 @@ const dp = new DPlayer({
     subtitle: subtitleUrl ? {
         url: subtitleUrl,
         type: 'webvtt',
-        fontSize: '30px'
+        fontSize: '30px',
+        color: '#FFFF00'
     } : null,
     hls: true,
     dash: true,
