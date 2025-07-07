@@ -6,11 +6,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
     <!-- Tambahkan link stylesheet Bootstrap -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dashjs/dist/dash.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pearplayer"></script>
     <style>
       body {
         background-color: #313131;
@@ -82,7 +77,12 @@
       <div id="dplayer"></div>
       
     </div>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/flv.js/dist/flv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dashjs/dist/dash.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pearplayer"></script>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const videoUrl = urlParams.get('url');
@@ -101,6 +101,7 @@
         },
         hls: true,
         dash: true,
+        flv: true,
         xhrSetup: {
           headers: {
             'Referer': 'https://dplayer.js.org/'
