@@ -20,6 +20,7 @@ const dp = new DPlayer({
     } : null,
     hls: true,
     dash: true,
+    flv: true,
     xhrSetup: {
         headers: {
             'Referer': 'https://dplayer.js.org/'
