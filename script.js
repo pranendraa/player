@@ -31,6 +31,9 @@ const dp = new DPlayer({
         },
         dash: {
             enable: true
+        },
+        flv: {
+            enable: true
         }
     }
 });
